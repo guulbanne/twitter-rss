@@ -155,7 +155,7 @@ class TweetGetter(object):
 class UserTweetGetter(TweetGetter):
     def __init__(self, username, pictures=False):
         self.directory = 'user'
-        super(UserTweetGetter, self).__init__("https://twitter.com/{0}/with_replies", username, pictures=pictures)
+        super(UserTweetGetter, self).__init__("https://twitter.com/{0}", username, pictures=pictures)
 
 
 class HashtagTweetGetter(TweetGetter):
