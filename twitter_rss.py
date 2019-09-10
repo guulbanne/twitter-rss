@@ -224,7 +224,7 @@ class FeedManager(object):
 
     def get_cached(self, kind, feed):
         cache_path = self.cached_file_path(kind, feed)
-        is_valid = lambda path: arrow.utcnow() < arrow.get(os.path.getmtime(path)).replace(minutes=+self.cache_duration)
+        is_valid = lambda path: arrow.utcnow() < arrow.get(os.path.getmtime(path)).shift(minutes=+self.cache_duration)
         if not os.path.isfile(cache_path) or not is_valid(cache_path):
             _logger.info("Need to update cache for feed {}/{}".format(kind, feed))
             return None
