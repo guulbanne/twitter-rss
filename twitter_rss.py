@@ -137,7 +137,7 @@ class TweetGetter(object):
             c.find_all("p", "js-tweet-text")
         )
 
-        for content in soup.find_all("div", {'class': ["content", "StreamItem"]}):
+        for content in soup.find_all(attrs={"data-item-type": "tweet"}):
             for meta, text in get_meta_text(content):
                 self.tweets.append(Tweet(text, meta, pictures=self.pictures))
 
